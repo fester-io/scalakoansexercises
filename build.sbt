@@ -25,6 +25,9 @@ javacOptions ++= Vector(
   "-Xlint:unchecked",
   "-Xlint:deprecation")
 
+parallelExecution in Test := false
+fork := true
+
 val ScalaTestVersion = "+"
 
 libraryDependencies ++= Seq(
