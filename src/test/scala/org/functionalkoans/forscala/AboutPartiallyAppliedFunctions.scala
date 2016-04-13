@@ -1,10 +1,9 @@
 package org.functionalkoans.forscala
 
 import support.KoanSuite
-import org.scalatest.matchers.ShouldMatchers
 
-class AboutPartiallyAppliedFunctions extends KoanSuite with ShouldMatchers {
   koan("""A partially applied function is a function that you do not apply any or all the
+class AboutPartiallyAppliedFunctions extends KoanSuite with Matchers {
          | arguments, creating another function. This partially applied function
          | doesn't apply any arguments""") {
     def sum(a: Int, b: Int, c: Int) = a + b + c

@@ -1,13 +1,12 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.matchers.ShouldMatchers
-import support.KoanSuite
+import org.functionalkoans.forscala.support.KoanSuite
 
-class AboutFormatting extends KoanSuite with ShouldMatchers {
+class AboutFormatting extends KoanSuite with Matchers {
 
   koan("String can be placed in format") {
     val s = "Hello World"
-    "Application %s".format(s) should be (__)
+    "Application %s".format(s) should be(__)
   }
 
   koan("Character Literals can be an a single character") {
@@ -40,13 +39,13 @@ class AboutFormatting extends KoanSuite with ShouldMatchers {
 
   koan("Formatting can also include numbers") {
     val j = 190
-    "%d bottles of beer on the wall" format j - 100 should be (__)
+    "%d bottles of beer on the wall" format j - 100 should be(__)
   }
 
   koan("Formatting can be used for any number of items, like a string and a number") {
     val j = 190
     val k = "vodka"
 
-    "%d bottles of %s on the wall".format(j - 100, k) should be (__)
+    "%d bottles of %s on the wall".format(j - 100, k) should be(__)
   }
 }

@@ -1,12 +1,11 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.matchers.ShouldMatchers
 import language.implicitConversions
 import support.KoanSuite
 
-class AboutImplicits extends KoanSuite with ShouldMatchers {
 
   koan("""Implicits wrap around existing classes to provide extra functionality
+class AboutImplicits extends KoanSuite with Matchers {
            |   This is similar to \'monkey patching\' in Ruby, and Meta-Programming in Groovy.
            |   Creating a method isOdd for Int, which doesn't exist""") {
 

@@ -1,9 +1,8 @@
 package org.functionalkoans.forscala
 
-import org.scalatest.matchers.ShouldMatchers
 import support.KoanSuite
 
-class AboutInfixTypes extends KoanSuite with ShouldMatchers {
+class AboutInfixTypes extends KoanSuite with Matchers {
 
   koan("""We can make a type infix, meaning that the type can be displayed in complement
            between two types in order to make a readable delaration""") {

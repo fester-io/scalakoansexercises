@@ -2,11 +2,10 @@ package org.functionalkoans.forscala
 
 import support.KoanSuite
 import language.postfixOps
-import org.scalatest.matchers.ShouldMatchers
 
-class AboutInfixPrefixAndPostfixOperators extends KoanSuite with ShouldMatchers {
 
   koan("""Simple: Infix Operators are available if an object
+class AboutInfixPrefixAndPostfixOperators extends KoanSuite with Matchers {
            |  has a method that takes one parameter.""") {
 
     val g: Int = 3
