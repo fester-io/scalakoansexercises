@@ -3,7 +3,7 @@ package org.functionalkoans.forscala.support
 import org.scalatest._
 import org.scalatest.events._
 import org.scalatest.exceptions.TestPendingException
-import org.scalatest.matchers.Matcher
+import org.scalatest.matchers.BeMatcher
 
 trait KoanSuite extends FunSuite with Matchers {
 
@@ -13,7 +13,7 @@ trait KoanSuite extends FunSuite with Matchers {
 
   def meditate() = pending
 
-  def __ : Matcher[Any] = {
+  def __ : BeMatcher[Any] = {
     throw new TestPendingException
   }
 
