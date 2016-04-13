@@ -28,6 +28,11 @@ javacOptions ++= Vector(
 parallelExecution in Test := false
 fork := true
 
+logLevel := Level.Info
+traceLevel := -1
+showSuccess := false
+showTiming := false
+
 val ScalaTestVersion = "+"
 
 libraryDependencies ++= Seq(
