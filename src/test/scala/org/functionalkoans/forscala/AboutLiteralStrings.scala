@@ -1,6 +1,7 @@
 package org.functionalkoans.forscala
 
 import org.functionalkoans.forscala.support.KoanSuite
+import org.scalatest.Matchers
 
 class AboutLiteralStrings extends KoanSuite with Matchers {
 
