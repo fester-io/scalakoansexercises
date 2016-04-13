@@ -28,5 +28,9 @@ javacOptions ++= Vector(
 val ScalaTestVersion = "+"
 
 libraryDependencies ++= Seq(
-	"org.scalatest" %% "scalatest" % ScalaTestVersion % Test,
+	"org.scalatest" %% "scalatest-core" % ScalaTestVersion % Test,
+	"org.scalatest" %% "scalatest-funsuite" % ScalaTestVersion % Test,
+	"org.scalatest" %% "scalatest-junit" % ScalaTestVersion % Test,
+	"org.scalatest" %% "scalatest-flatspec" % ScalaTestVersion % Test,
+	"org.scalatest" %% "scalatest-wordspec" % ScalaTestVersion % Test,
 	"org.scalatest" %% "scalatest-matchers" % ScalaTestVersion % Test)
