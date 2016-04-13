@@ -14,7 +14,6 @@ class AboutFormatting extends KoanSuite with Matchers {
     val a = 'a'
     val b = 'B'
 
-
     //format(a) is a string format, meaning the "%c".format(x)
     //will return the string representation of the char.
 
@@ -23,6 +22,7 @@ class AboutFormatting extends KoanSuite with Matchers {
 
   }
 
+  /** @note beware that octal values are highly deprecated and discouraged in any language! */
   koan("Character Literals can be an escape sequence, including octal or hexidecimal") {
 
     val c = '\u0061' //unicode for a
@@ -30,13 +30,11 @@ class AboutFormatting extends KoanSuite with Matchers {
     val e = '\"'
     val f = '\\'
 
-
     "%c".format(c) should be(__)
     "%c".format(d) should be(__)
     "%c".format(e) should be(__)
     "%c".format(f) should be(__)
   }
-
 
   koan("Formatting can also include numbers") {
     val j = 190
