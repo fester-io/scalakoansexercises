@@ -11,7 +11,6 @@ scalacOptions ++= Vector(
   "-language:implicitConversions",
   "-language:higherKinds",
   "-language:existentials",
-  "-Xlog-reflective-calls",
   "-encoding", "UTF-8",
   "-target:jvm-1.8",
   "-unchecked",
