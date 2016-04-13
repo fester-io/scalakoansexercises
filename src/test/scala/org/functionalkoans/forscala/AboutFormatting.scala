@@ -49,4 +49,18 @@ class AboutFormatting extends KoanSuite with Matchers {
 
     "%d bottles of %s on the wall".format(j - 100, k) should be(__)
   }
+
+  koan("Formatting can be done inline using the 's' macro on a string") {
+    val j = 190
+    val k = "vodka"
+
+    s"$j bottles of $k on the wall" should be(__)
+  }
+
+  koan("Formatting with the 's' macro can also be used for expressions") {
+    val j = 190
+    val k = "vodka"
+
+    s"${j - 100} bottles of $k on the wall" should be(__)
+  }
 }
