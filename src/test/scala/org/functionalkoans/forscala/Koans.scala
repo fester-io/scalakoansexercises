@@ -51,11 +51,9 @@ class Koans extends Suites(
   new AboutEnumerations,
   new AboutMacros) {
 
-  override def run(testName: Option[String], args: Args) = {
-    super.run(testName, args.copy(stopper = Master))
-  }
-
-  override protected def runTest(testName: String, args: Args) = {
-    super.runTest(testName, args.copy(stopper = Master))
-  }
+  override def run(testName: Option[String], args: Args) =
+    if (!Master.stopRequested)
+      super.run(testName, args.copy(stopper = Master))
+    else
+      SucceededStatus
 }
