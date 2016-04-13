@@ -55,7 +55,7 @@ class AboutTraversables extends KoanSuite with Matchers {
           and will return a different collection. In this koan, a case fragment is a partial function.""") {
     val list = List(4, 6, 7, 8, 9, 13, 14)
     val result = list.collect {
-      case x: Int if (x % 2 == 0) => x * 3
+      case x: Int if x % 2 == 0 => x * 3
     }
     result should be(List(__, __, __, __))
   }
@@ -382,8 +382,8 @@ class AboutTraversables extends KoanSuite with Matchers {
         zeroPartial
     }
 
-    (result("Even and less than 100") size) should be(__)
-    (result("Large Number") size) should be(__)
+    result("Even and less than 100").length should be(__)
+    result("Large Number").length should be(__)
   }
 
   koan(
@@ -467,28 +467,20 @@ class AboutTraversables extends KoanSuite with Matchers {
     (5 - (4 - (3 - (2 - (1 - 0))))) should be(__)
   }
 
-  koan( """`reduceLeft` is the similar to foldLeft, except that the seed is the head value""") {
+  koan("""`reduceLeft` is the similar to foldLeft, except that the seed is the head value""") {
     val intList = List(5, 4, 3, 2, 1)
-    intList.reduceLeft {
-      _ + _
-    } should be(__)
+    intList reduceLeft (_ + _) should be(__)
 
     val stringList = List("Do", "Re", "Me", "Fa", "So", "La", "Te", "Do")
-    stringList.reduceLeft {
-      _ + _
-    } should be(__)
+    stringList reduceLeft (_ + _) should be(__)
   }
 
-  koan( """`reduceRight` is the similar to foldRight, except that the seed is the last value""") {
+  koan("""`reduceRight` is the similar to foldRight, except that the seed is the last value""") {
     val intList = List(5, 4, 3, 2, 1)
-    intList.reduceRight {
-      _ + _
-    } should be(__)
+    intList reduceRight (_ + _) should be(__)
 
     val stringList = List("Do", "Re", "Me", "Fa", "So", "La", "Te", "Do")
-    stringList.reduceRight {
-      _ + _
-    } should be(__)
+    stringList reduceRight (_ + _) should be(__)
   }
 
   koan(
@@ -496,10 +488,10 @@ class AboutTraversables extends KoanSuite with Matchers {
       |  `sum` will add all the elements, product will multiply, min would determine the smallest element, and
       |  `max` the largest.""") {
     val intList = List(5, 4, 3, 2, 1)
-    intList.sum should be(__)
-    intList.product should be(__)
-    intList.max should be(__)
-    intList.min should be(__)
+    (intList sum) should be(__)
+    (intList product) should be(__)
+    (intList max) should be(__)
+    (intList min) should be(__)
   }
 
   koan(
@@ -561,8 +553,7 @@ class AboutTraversables extends KoanSuite with Matchers {
       history = history :+ s
     }
 
-    lst.map { x => addHistory("Doubling %s".format(x)); x * 2 }.map { x => addHistory("Adding 1 to %s".format(x)); x
-      + 1 }
+    lst map { x ⇒ addHistory(s"Doubling $x"); x * 2 } map { x ⇒ addHistory(s"Adding 1 to $x"); x + 1 }
 
     history(0) should be(__)
     history(1) should be(__)
