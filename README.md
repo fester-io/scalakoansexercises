@@ -1,1 +1,1 @@
-## Scala Koans Exercises - scala 2.11 + scalatest 3
+# Scala Koans Exercises - scala 2.11 + scalatest 3
