@@ -49,15 +49,18 @@ trait KoanSuite extends FunSuite with Matchers {
     }
   }
 
-  protected override def runTest(
+  protected def runTest(
       testName: String,
       reporter: Reporter,
       stopper: Stopper,
       configMap: Map[String, Any],
       tracker: Tracker) {
     if (!Master.studentNeedsToMeditate) {
-      super.runTest(testName, new ReportToTheMaster(reporter), Master, configMap, tracker)
+      super.runTest(testName,
+        Args(reporter = new ReportToTheMaster(reporter),
+          stopper = Master,
+          configMap = ConfigMap(configMap.toSeq: _*),
+          tracker = tracker))
     }
   }
-
 }
