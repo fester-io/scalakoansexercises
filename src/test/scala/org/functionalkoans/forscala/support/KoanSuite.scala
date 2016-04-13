@@ -1,5 +1,6 @@
 package org.functionalkoans.forscala.support
 
+import org.functionalkoans.forscala.support.Master.HasTestNameAndSuiteName
 import org.scalatest._
 import org.scalatest.events._
 import org.scalatest.exceptions.TestPendingException
@@ -40,10 +41,10 @@ trait KoanSuite extends FunSuite with Matchers {
 
     def apply(event: Event) {
       event match {
-        case e: TestIgnored => failure(event.asInstanceOf[Master.HasTestNameAndSuiteName])
-        case e: TestFailed => failure(event.asInstanceOf[Master.HasTestNameAndSuiteName])
-        case e: TestPending => failure(event.asInstanceOf[Master.HasTestNameAndSuiteName])
-        case _ => other(event)
+        case e: TestIgnored ⇒ failure(HasTestNameAndSuiteName(e.testName, e.suiteName))
+        case e: TestFailed ⇒ failure(HasTestNameAndSuiteName(e.testName, e.suiteName))
+        case e: TestPending ⇒ failure(HasTestNameAndSuiteName(e.testName, e.suiteName))
+        case _ ⇒ other(event)
       }
 
     }
