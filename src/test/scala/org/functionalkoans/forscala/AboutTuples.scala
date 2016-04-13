@@ -1,7 +1,8 @@
 package org.functionalkoans.forscala
 
-import support.KoanSuite
 import java.util.Date
+
+import org.functionalkoans.forscala.support.KoanSuite
 
 class AboutTuples extends KoanSuite {
 

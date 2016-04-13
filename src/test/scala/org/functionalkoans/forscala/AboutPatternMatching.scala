@@ -1,6 +1,6 @@
 package org.functionalkoans.forscala
 
-import support.KoanSuite
+import org.functionalkoans.forscala.support.KoanSuite
 
 class AboutPatternMatching extends KoanSuite {
 
@@ -77,8 +77,10 @@ class AboutPatternMatching extends KoanSuite {
 
 
   koan("Pattern matching can done on regular expression groups") {
-    val EatingRegularExpression = """Eating Alert: bear=([^,]+),\s+source=(.+)""".r //.r turns a String to a regular expression
-    val SittingRegularExpression = """Sitting Alert: bear=([^,]+),\s+source=(.+)""".r
+    val EatingRegularExpression = """Eating Alert: bear=([^,]+),\s+source=(.+)""".r //.r turns a String to a regular
+    // expression
+    val SittingRegularExpression =
+      """Sitting Alert: bear=([^,]+),\s+source=(.+)""".r
     val SleepingRegularExpression = """Sleeping Alert: bear=([^,]+),\s+source=(.+)""".r
 
     def goldilocks(expr: String) = expr match {
@@ -92,8 +94,9 @@ class AboutPatternMatching extends KoanSuite {
     goldilocks("Sitting Alert: bear=Mama, source=chair") should be(__)
   }
 
-  koan( """A backquote can be used to refer to a stable variable in scope to create a case statement.
-          | This prevents what is called \'Variable Shadowing\'""") {
+  koan(
+    """A backquote can be used to refer to a stable variable in scope to create a case statement.
+      | This prevents what is called \'Variable Shadowing\'""") {
     val foodItem = "porridge"
 
     def goldilocks(expr: Any) = expr match {
@@ -135,7 +138,7 @@ class AboutPatternMatching extends KoanSuite {
   koan(
     """To obtain the second you can expand on the pattern. Where x is the first element, y
       | is the second element, and xs is the rest. """.stripMargin) {
-    val secondElement = List(1,2,3) match {
+    val secondElement = List(1, 2, 3) match {
       case x :: y :: xs => xs
       case _ => 0
     }

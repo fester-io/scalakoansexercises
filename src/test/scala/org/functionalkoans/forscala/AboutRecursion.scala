@@ -1,6 +1,7 @@
 package org.functionalkoans.forscala
 
 import org.functionalkoans.forscala.support.KoanSuite
+
 import scala.annotation.tailrec
 
 class AboutRecursion extends KoanSuite {
@@ -46,7 +47,8 @@ class AboutRecursion extends KoanSuite {
   }
 
   koan(
-    """As properly tail recursive method will use an accumulator method so that the only call of a recursive method is the last one.
+    """As properly tail recursive method will use an accumulator method so that the only call of a recursive method
+      |is the last one.
       | just like the first koan above.""") {
 
 

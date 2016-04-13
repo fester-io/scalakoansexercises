@@ -1,6 +1,6 @@
 package org.functionalkoans.forscala
 
-import support.KoanSuite
+import org.functionalkoans.forscala.support.KoanSuite
 
 class AboutLists extends KoanSuite {
 
@@ -73,18 +73,22 @@ class AboutLists extends KoanSuite {
     a.toString should equal("List(__, __, __, __, __)")
 
     // map a function to double the numbers over the list
-    a.map {v => v * 2} should equal(List(__, __, __, __, __))
+    a.map { v => v * 2 } should equal(List(__, __, __, __, __))
 
     // filter any values divisible by 3 in the list
-    a.filter {v => v % 3 == 0} should equal(List(__, __))
+    a.filter { v => v % 3 == 0 } should equal(List(__, __))
   }
 
   koan("Functions over lists can use _ as shorthand") {
     val a = List(1, 2, 3)
 
-    a.map {_ * 2} should equal(List(__, __, __))
+    a.map {
+      _ * 2
+    } should equal(List(__, __, __))
 
-    a.filter {_ % 2 == 0} should equal(List(__))
+    a.filter {
+      _ % 2 == 0
+    } should equal(List(__))
   }
 
   koan("Functions over lists can use () instead of {}") {

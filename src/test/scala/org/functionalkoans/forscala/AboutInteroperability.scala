@@ -1,15 +1,16 @@
 package org.functionalkoans.forscala
 
-import support.KoanSuite
+import org.functionalkoans.forscala.support.KoanSuite
 
-  koan("""You can interop with a java class and it's use of collections by importing
 class AboutInteroperability extends KoanSuite with Matchers {
-          |   scala.collection.JavaConversions and letting scala implicitly convert
-          |   from a Scala collection type
-          |   into a Java collection type.  See AboutImplicits Koan Suite for more details
-          |   and see src/test/java for the
-          |   SomeJavaClass file. This koan
-          |   converts a scala List of String to java List of raw type.""") {
+  koan(
+    """You can interop with a java class and it's use of collections by importing
+      |   scala.collection.JavaConversions and letting scala implicitly convert
+      |   from a Scala collection type
+      |   into a Java collection type.  See AboutImplicits Koan Suite for more details
+      |   and see src/test/java for the
+      |   SomeJavaClass file. This koan
+      |   converts a scala List of String to java List of raw type.""") {
 
     import scala.collection.JavaConversions._
     val d = new SomeJavaClass

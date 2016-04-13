@@ -1,6 +1,6 @@
 package org.functionalkoans.forscala
 
-import support.KoanSuite
+import org.functionalkoans.forscala.support.KoanSuite
 
 class AboutForExpressions extends KoanSuite {
 
@@ -22,7 +22,7 @@ class AboutForExpressions extends KoanSuite {
 
     sum should equal(__)
   }
-  
+
   koan("For expressions can nest, with later generators varying more rapidly than earlier ones") {
     val xValues = Range(1, 5)
     val yValues = Range(1, 3)

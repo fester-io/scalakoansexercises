@@ -1,19 +1,19 @@
 package org.functionalkoans.forscala
 
-import support.KoanSuite
+import org.functionalkoans.forscala.support.KoanSuite
 
 class AboutHigherOrderFunctions extends KoanSuite {
 
   koan("Meet lambda. Anonymous function") {
     def lambda = { x: Int => x + 1 }
-    def lambda2 = (x:Int) => x + 1
-    val lambda3 = (x:Int) => x + 1
+    def lambda2 = (x: Int) => x + 1
+    val lambda3 = (x: Int) => x + 1
 
     val lambda4 = new Function1[Int, Int] {
       def apply(v1: Int): Int = v1 + 1
     }
 
-    def lambda5(x:Int) = x + 1
+    def lambda5(x: Int) = x + 1
 
 
     val result = lambda(3)
@@ -56,7 +56,7 @@ class AboutHigherOrderFunctions extends KoanSuite {
 
   koan("We can take that closure and throw into a method and it will still hold the environment") {
 
-    def summation(x:Int, y: Int => Int) = y(x)
+    def summation(x: Int, y: Int => Int) = y(x)
 
     var incrementer = 3
     def closure = (x: Int) => x + incrementer
@@ -76,7 +76,7 @@ class AboutHigherOrderFunctions extends KoanSuite {
       }
     }
     addWithoutSyntaxSugar(1).
-      isInstanceOf[Function1[Int,Int]] should be(__)
+      isInstanceOf[Function1[Int, Int]] should be(__)
 
     addWithoutSyntaxSugar(2)(3) should be(__)
 
@@ -86,9 +86,9 @@ class AboutHigherOrderFunctions extends KoanSuite {
 
   koan("function returning another function " +
     "using an anonymous function") {
-    def addWithSyntaxSugar(x: Int) = (y:Int) => x + y
+    def addWithSyntaxSugar(x: Int) = (y: Int) => x + y
 
-    addWithSyntaxSugar(1).isInstanceOf[Function1[Int,Int]] should be(__)
+    addWithSyntaxSugar(1).isInstanceOf[Function1[Int, Int]] should be(__)
     addWithSyntaxSugar(2)(3) should be(__)
 
     def fiveAdder = addWithSyntaxSugar(5)
@@ -100,7 +100,7 @@ class AboutHigherOrderFunctions extends KoanSuite {
     """isInstanceOf is the same as instanceof in java, but in this case the parameter types can be
       | 'blanked out' using existential types with is a single underline, since parameter type are unknown
       | at runtime.""") {
-    def addWithSyntaxSugar(x: Int) = (y:Int) => x + y
+    def addWithSyntaxSugar(x: Int) = (y: Int) => x + y
 
     addWithSyntaxSugar(1).isInstanceOf[Function1[Int, Int]] should be(__)
   }
@@ -111,7 +111,9 @@ class AboutHigherOrderFunctions extends KoanSuite {
     """function taking another function as parameter. Helps in composing functions.
       | Hint: a map method applies the function to each element of a list""") {
 
-    def makeUpper(xs: List[String]) = xs map {_.toUpperCase}
+    def makeUpper(xs: List[String]) = xs map {
+      _.toUpperCase
+    }
 
     def makeWhatEverYouLike(xs: List[String], sideEffect: String => String) = {
       xs map sideEffect
@@ -124,7 +126,9 @@ class AboutHigherOrderFunctions extends KoanSuite {
     }) should be(__)
 
     //using it inline
-    List("Scala", "Erlang", "Clojure") map {_.length} should be(__)
+    List("Scala", "Erlang", "Clojure") map {
+      _.length
+    } should be(__)
   }
 
   koan("Currying is a technique to transform function with multiple parameters to function with one parameter") {

@@ -1,6 +1,6 @@
 package org.functionalkoans.forscala
 
-import support.KoanSuite
+import org.functionalkoans.forscala.support.KoanSuite
 
 class AboutTypeSignatures extends KoanSuite {
   koan("In Java you declare a generic type within a <>, in Scala it is []") {
@@ -25,7 +25,7 @@ class AboutTypeSignatures extends KoanSuite {
     }
 
     val intRand = new IntRandomizer
-    (intRand.draw < Int.MaxValue) should be (__)
+    (intRand.draw < Int.MaxValue) should be(__)
   }
 
   koan("Class meta-information can be retrieved by class name by using classOf[className]") {

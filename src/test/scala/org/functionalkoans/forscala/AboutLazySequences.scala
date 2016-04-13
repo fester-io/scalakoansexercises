@@ -1,6 +1,6 @@
 package org.functionalkoans.forscala
 
-import support.KoanSuite
+import org.functionalkoans.forscala.support.KoanSuite
 
 class AboutLazySequences extends KoanSuite {
 
@@ -11,9 +11,11 @@ class AboutLazySequences extends KoanSuite {
   }
 
   koan("Strict collection always processes its elements but " +
-       "lazy collection does it on demand") {
+    "lazy collection does it on demand") {
     var x = 0
-    def inc = {x += 1; x}
+    def inc = {
+      x += 1; x
+    }
 
     val strictList = List(inc _, inc _, inc _)
     strictList.map(f => f).head should be(__)
@@ -31,7 +33,9 @@ class AboutLazySequences extends KoanSuite {
   }
 
   koan("Lazy collection sometimes avoid processing errors") {
-    val lazyList = List(2, -2, 0, 4).view map { 2 / _ }
+    val lazyList = List(2, -2, 0, 4).view map {
+      2 / _
+    }
     lazyList.head should be(__)
     lazyList(1) should be(__)
     intercept[ArithmeticException] {

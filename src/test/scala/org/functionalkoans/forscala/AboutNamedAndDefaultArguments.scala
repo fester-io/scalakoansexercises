@@ -1,6 +1,6 @@
 package org.functionalkoans.forscala
 
-import support.KoanSuite
+import org.functionalkoans.forscala.support.KoanSuite
 
 class AboutNamedAndDefaultArguments() extends KoanSuite {
 
@@ -24,8 +24,9 @@ class AboutNamedAndDefaultArguments() extends KoanSuite {
     }
   }
 
-  class WithClassParametersInClassDefinition(val defaultRed: Int = 0, val defaultGreen: Int = 255,
-                                             val defaultBlue: Int = 100) {
+  class WithClassParametersInClassDefinition(
+      val defaultRed: Int = 0, val defaultGreen: Int = 255,
+      val defaultBlue: Int = 100) {
     def addColors(red: Int, green: Int, blue: Int) = {
       (red + defaultRed, green + defaultGreen, blue + defaultBlue)
     }

@@ -1,6 +1,7 @@
 package org.functionalkoans.forscala
 
-import support.KoanSuite
+import org.functionalkoans.forscala.support.KoanSuite
+
 import scala.collection.mutable
 
 class AboutMutableSets extends KoanSuite {
@@ -20,14 +21,14 @@ class AboutMutableSets extends KoanSuite {
 
   koan("Mutable sets can have tuples of elements removed") {
     val mySet = mutable.Set("Michigan", "Ohio", "Wisconsin", "Iowa")
-    mySet -= ("Iowa", "Ohio")
+    mySet -=("Iowa", "Ohio")
     mySet contains "Ohio" should be(__)
     mySet.size should be(__)
   }
 
   koan("Mutable sets can have tuples of elements added") {
     val mySet = mutable.Set("Michigan", "Wisconsin")
-    mySet += ("Iowa", "Ohio")
+    mySet +=("Iowa", "Ohio")
     mySet contains "Ohio" should be(__)
     mySet.size should be(__)
   }

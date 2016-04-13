@@ -1,7 +1,7 @@
 package org.functionalkoans.forscala
 
+import org.functionalkoans.forscala.support.Master
 import org.scalatest._
-import support.Master
 
 class Koans extends Suite {
   override def nestedSuites = List(
@@ -52,8 +52,9 @@ class Koans extends Suite {
     new AboutEnumerations
   )
 
-  override def run(testName: Option[String], reporter: Reporter, stopper: Stopper, filter: Filter,
-                   configMap: Map[String, Any], distributor: Option[Distributor], tracker: Tracker) {
+  override def run(
+      testName: Option[String], reporter: Reporter, stopper: Stopper, filter: Filter,
+      configMap: Map[String, Any], distributor: Option[Distributor], tracker: Tracker) {
     super.run(testName, reporter, Master, filter, configMap, distributor, tracker)
   }
 

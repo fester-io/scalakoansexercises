@@ -1,6 +1,6 @@
 package org.functionalkoans.forscala
 
-import support.KoanSuite
+import org.functionalkoans.forscala.support.KoanSuite
 class AboutSets extends KoanSuite {
 
   koan("Sets can be created easily") {
@@ -55,7 +55,7 @@ class AboutSets extends KoanSuite {
 
   koan("Set elements can be removed with a tuple") {
     val mySet = Set("Michigan", "Ohio", "Wisconsin", "Iowa")
-    val aNewSet = mySet - ("Michigan", "Ohio") // Notice: single '-' operator for tuples
+    val aNewSet = mySet -("Michigan", "Ohio") // Notice: single '-' operator for tuples
 
     aNewSet.contains("Michigan") should be(__)
     aNewSet.contains("Wisconsin") should be(__)
@@ -73,7 +73,7 @@ class AboutSets extends KoanSuite {
     val mySet = Set(1, 3, 4, 9)
     var sum = 0
     for (i <- mySet)
-      sum = sum + i  //Of course this is the same thing as mySet.reduce(_ + _)
+      sum = sum + i //Of course this is the same thing as mySet.reduce(_ + _)
 
     sum should be(__)
   }
@@ -113,7 +113,7 @@ class AboutSets extends KoanSuite {
     val aNewSet = mySet1 diff mySet2 // Note: you can use the "&~" operator if you *really* want to.
 
     aNewSet.equals(Set("Ohio", "Iowa")) should be(__)
-  } 
+  }
 
   koan("Set equivalency is independent of order") {
     val mySet1 = Set("Michigan", "Ohio", "Wisconsin", "Iowa")

@@ -1,6 +1,6 @@
 package org.functionalkoans.forscala
 
-import support.KoanSuite
+import org.functionalkoans.forscala.support.KoanSuite
 
 class AboutConstructors extends KoanSuite {
 
@@ -8,13 +8,13 @@ class AboutConstructors extends KoanSuite {
     // invoke auxiliary constructor
     def this() {
       // what happens if you comment out the following line?
-      this ("defaultname")
+      this("defaultname")
     }
   }
 
   koan("Primary constructor specified with a parameter requires that parameter to be passed in") {
     val aboutMe = new AboutConstructorWithAuxiliaryConstructor()
-    aboutMe.name should be (__)
+    aboutMe.name should be(__)
   }
 
   class AboutClassWithNoClassParameter

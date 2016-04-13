@@ -112,9 +112,10 @@ class AboutExtractors extends KoanSuite {
     """What is typical is to create a custom extractor in the companion object of the class.
       | In this koan, we use it as an assignment""") {
 
-    class Employee(val firstName: String,
-                   val middleName: Option[String],
-                   val lastName: String)
+    class Employee(
+        val firstName: String,
+        val middleName: Option[String],
+        val lastName: String)
 
     object Employee {
       //factory methods, extractors, apply
@@ -134,9 +135,10 @@ class AboutExtractors extends KoanSuite {
 
   koan("In this koan we use the unapply for pattern matching employee objects") {
 
-    class Employee(val firstName: String,
-                   val middleName: Option[String],
-                   val lastName: String)
+    class Employee(
+        val firstName: String,
+        val middleName: Option[String],
+        val lastName: String)
 
     object Employee {
       //factory methods, extractors, apply

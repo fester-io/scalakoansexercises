@@ -11,7 +11,7 @@ class AboutAsserts extends KoanSuite with Matchers {
   }
 
   koan("asserts can include a message") {
-    assert(false, "This should be true")
+    assert(condition = false, "This should be true")
   }
 
   koan("true and false values can be compared with should matchers") {

@@ -18,10 +18,11 @@ object SecretAgent {
   }
 }
 
-class Person (val name:String,  private val superheroName:String)  //The superhero name is private!
+class Person(val name: String, private val superheroName: String)
+//The superhero name is private!
 
 object Person {
-  def showMeInnerSecret(x:Person) = x.superheroName
+  def showMeInnerSecret(x: Person) = x.superheroName
 }
 
 
@@ -118,9 +119,9 @@ class AboutObjects extends KoanSuite {
     val bruce = new Person("Bruce Wayne", "Batman")
     val diana = new Person("Diana Prince", "Wonder Woman")
 
-    Person.showMeInnerSecret(clark) should be (__)
-    Person.showMeInnerSecret(peter) should be (__)
-    Person.showMeInnerSecret(bruce) should be (__)
-    Person.showMeInnerSecret(diana) should be (__)
+    Person.showMeInnerSecret(clark) should be(__)
+    Person.showMeInnerSecret(peter) should be(__)
+    Person.showMeInnerSecret(bruce) should be(__)
+    Person.showMeInnerSecret(diana) should be(__)
   }
 }

@@ -1,6 +1,6 @@
 package org.functionalkoans.forscala
 
-import support.KoanSuite
+import org.functionalkoans.forscala.support.KoanSuite
 
 class AboutLiteralStrings extends KoanSuite with Matchers {
 
@@ -42,28 +42,31 @@ class AboutLiteralStrings extends KoanSuite with Matchers {
     a should be(__)
   }
 
-  koan("""Multiline String literals
+  koan(
+    """Multiline String literals
 	are surrounded
 	by three quotation marks""") {
-    val a = """An apple a day
+    val a =
+      """An apple a day
     keeps the doctor away"""
     a.split('\n').size should be(__) //a.split('\n').size determines the number of lines
   }
 
   koan("Use stripMargin to prettify multi-line strings") {
 
-   /*
-	  * Multiline String literals can use | to specify the starting position
-	  * of subsequent lines, then use stripMargin to remove the surplus indentation.
-	  */
+    /*
+     * Multiline String literals can use | to specify the starting position
+     * of subsequent lines, then use stripMargin to remove the surplus indentation.
+     */
 
-    val a = """An apple a day
-               |keeps the doctor away"""
+    val a =
+      """An apple a day
+        |keeps the doctor away"""
     a.stripMargin.split('\n')(1).charAt(0) should be(__)
 
-   /*
-	  * a.stripMargin.split('\n')(1).charAt(0)
-    * gets the first character of the second line
-	  */
+    /*
+     * a.stripMargin.split('\n')(1).charAt(0)
+     * gets the first character of the second line
+     */
   }
 }

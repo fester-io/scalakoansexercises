@@ -3,11 +3,11 @@ package org.functionalkoans.forscala
 import org.functionalkoans.forscala.support.KoanSuite
 
 /**
- * AboutByNameParameter
- * Koan to help understand by name parameters in Scala
- * Prerequisites: AboutEither, AboutHigherOrderFunctions, AboutExceptions,
- *                About Pattern Matching, AboutApply
- */
+  * AboutByNameParameter
+  * Koan to help understand by name parameters in Scala
+  * Prerequisites: AboutEither, AboutHigherOrderFunctions, AboutExceptions,
+  * About Pattern Matching, AboutApply
+  */
 class AboutByNameParameter extends KoanSuite {
 
   koan(
@@ -23,11 +23,11 @@ class AboutByNameParameter extends KoanSuite {
       }
     }
 
-    val y = calc {() => //Having explicitly declaring that Unit is a parameter with ()
+    val y = calc { () => //Having explicitly declaring that Unit is a parameter with ()
       14 + 15
     }
 
-    y should be (__)
+    y should be(__)
   }
 
 
@@ -35,7 +35,8 @@ class AboutByNameParameter extends KoanSuite {
     """A by-name parameter does the same thing as a previous koan but there is no need to explicitly
       | handle Unit or (). This is used extensively in scala to create blocks.""") {
 
-    def calc(x: => Int): Either[Throwable, Int] = {   //x is a call by name parameter
+    def calc(x: => Int): Either[Throwable, Int] = {
+      //x is a call by name parameter
       try {
         Right(x)
       } catch {
@@ -43,13 +44,14 @@ class AboutByNameParameter extends KoanSuite {
       }
     }
 
-    val y = calc {                                    //This looks like a natural block
-      println("Here we go!")                          //Some superfluous call
-      val z = List(1, 2, 3, 4)                        //Another superfluous call
+    val y = calc {
+      //This looks like a natural block
+      println("Here we go!") //Some superfluous call
+      val z = List(1, 2, 3, 4) //Another superfluous call
       49 + 20
     }
 
-    y should be (__)
+    y should be(__)
   }
 
   koan("""By name parameters can also be used with an Object and apply to make interesting block-like calls""") {
@@ -63,6 +65,6 @@ class AboutByNameParameter extends KoanSuite {
       x ++ z //concatenate the strings
     }
 
-    result should be (__)
+    result should be(__)
   }
 }

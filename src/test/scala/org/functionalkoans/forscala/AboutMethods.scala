@@ -6,10 +6,11 @@ import scala.annotation.tailrec
 
 class AboutMethods extends KoanSuite {
 
-  koan( """A method's last statement will be what is returned
-          | There is no need for the keyword `return`.
-          | When a method includes a `=` after the method declaration that
-          | will infer the return type""") {
+  koan(
+    """A method's last statement will be what is returned
+      | There is no need for the keyword `return`.
+      | When a method includes a `=` after the method declaration that
+      | will infer the return type""") {
     def add(x: Int, y: Int) = {
       x + y
     }
@@ -45,16 +46,19 @@ class AboutMethods extends KoanSuite {
 
 
   koan( """If a method does not of have equal it is considered `Unit` which is analogous to `void` in Java""") {
-    def foo(x: Int) { //Note: No `=`
+    def foo(x: Int) {
+      //Note: No `=`
       (x + 4) should be(__)
     }
     foo(5)
   }
 
   koan(
-    """If you want to have an = on the method, while still explicitly returning Unit you can make the return type `Unit`,
+    """If you want to have an = on the method, while still explicitly returning Unit you can make the return type
+      |`Unit`,
       | this also analogous to `void""") {
-    def foo(x: Int): Unit = { //Note we are declaring Unit
+    def foo(x: Int): Unit = {
+      //Note we are declaring Unit
       (x + 4) should be(__)
     }
     foo(3)
@@ -74,9 +78,10 @@ class AboutMethods extends KoanSuite {
     """When performing recursion, the
       |return type on the method is mandatory!""") {
 
-    def factorial(x:BigInt):BigInt = { //Notice the return type of BigInt!
+    def factorial(x: BigInt): BigInt = {
+      //Notice the return type of BigInt!
       if (x <= 1) 1
-      else x * factorial(x-1)
+      else x * factorial(x - 1)
     }
 
     factorial(4) should be(__) // List(...) is how a list is created more about lists later.
@@ -91,9 +96,11 @@ class AboutMethods extends KoanSuite {
       | including scala.annotation.tailrec on the method.  When methods are properly tail recursive. The 
       | Scala compiler will optimize the code from stack recursion into a loop at compile time""") {
 
-    import scala.annotation.tailrec //importing annotation!
+    import scala.annotation.tailrec
+    //importing annotation!
     @tailrec
-    def fact(i: BigInt, accumulator: BigInt): BigInt = { // This is an accumulator to ensure tail recursion!
+    def fact(i: BigInt, accumulator: BigInt): BigInt = {
+      // This is an accumulator to ensure tail recursion!
       if (i <= 1)
         accumulator
       else
@@ -131,7 +138,7 @@ class AboutMethods extends KoanSuite {
     """Remember you can have strange characters in values and variables as long as they're
       |  after an underscore, well you can do the same in methods""") {
 
-    class Pennies(val n:Int)
+    class Pennies(val n: Int)
     def doYouHaveAnySpareChange_?() = new Pennies(25)
     doYouHaveAnySpareChange_?.n should be(__)
   }
@@ -141,24 +148,24 @@ class AboutMethods extends KoanSuite {
       | Same applies for methods. Although please note that this is uncommon unless you really are into
       | internal DSLs""") {
 
-    class Employee(val `first name`:String, val `last name`:String, val `employee status`: String)
+    class Employee(val `first name`: String, val `last name`: String, val `employee status`: String)
 
     def `put employee on probation`(employee: Employee) = {
-       new Employee(employee.`first name`, employee.`last name`, "Probation")
+      new Employee(employee.`first name`, employee.`last name`, "Probation")
     }
 
     val probationEmployee = `put employee on probation`(new Employee("Milton", "Waddams", ""))
-    probationEmployee.`employee status` should be (__)
+    probationEmployee.`employee status` should be(__)
   }
 
   koan(
     """Convention (not required for the compiler) states that if you a call a method that
       |returns a Unit, invoke that method with empty parenthesis, other leave the parenthesis out""") {
 
-    def add(a:Int, b:Int) = a + b //implied return type of Int!
-    def performSideEffect():Unit = System.currentTimeMillis
+    def add(a: Int, b: Int) = a + b //implied return type of Int!
+    def performSideEffect(): Unit = System.currentTimeMillis
 
-    add(4,6) should be (__)
+    add(4, 6) should be(__)
     performSideEffect() //Notice the parenthesis, since the method we called is Unit!
   }
 
@@ -166,12 +173,12 @@ class AboutMethods extends KoanSuite {
     """Methods with colons are right-associative, that means the object that a method is on will be on
       |the _right_ and the method parameter will be on the _left_""") {
 
-    class Foo (y:Int) {
-      def ~:(n:Int) = n + y + 3
+    class Foo(y: Int) {
+      def ~:(n: Int) = n + y + 3
     }
 
     val foo = new Foo(9)
-    10 ~: foo should be (__)
-    foo.~:(40) should be (__)
+    10 ~: foo should be(__)
+    foo.~:(40) should be(__)
   }
 }

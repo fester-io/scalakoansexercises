@@ -1,13 +1,15 @@
 package org.functionalkoans.forscala
 
-import language.implicitConversions
-import support.KoanSuite
+import org.functionalkoans.forscala.support.KoanSuite
 
+import scala.language.implicitConversions
 
-  koan("""Implicits wrap around existing classes to provide extra functionality
 class AboutImplicits extends KoanSuite with Matchers {
-           |   This is similar to \'monkey patching\' in Ruby, and Meta-Programming in Groovy.
-           |   Creating a method isOdd for Int, which doesn't exist""") {
+
+  koan(
+    """Implicits wrap around existing classes to provide extra functionality
+      |   This is similar to \'monkey patching\' in Ruby, and Meta-Programming in Groovy.
+      |   Creating a method isOdd for Int, which doesn't exist""") {
 
     class KoanIntWrapper(val original: Int) {
       def isOdd = original % 2 != 0
@@ -47,9 +49,10 @@ class AboutImplicits extends KoanSuite with Matchers {
     add(3, 6) should be(__)
   }
 
-  koan("""Implicits can be used declare a value to be provided as a default as
-          |   long as an implicit value is set with in the scope.  These are
-          |   called implicit function parameters""") {
+  koan(
+    """Implicits can be used declare a value to be provided as a default as
+      |   long as an implicit value is set with in the scope.  These are
+      |   called implicit function parameters""") {
 
     def howMuchCanIMake_?(hours: Int)(implicit dollarsPerHour: BigDecimal) = dollarsPerHour * hours
 

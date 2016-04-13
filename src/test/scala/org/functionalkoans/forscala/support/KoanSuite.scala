@@ -1,17 +1,19 @@
 package org.functionalkoans.forscala.support
 
+import org.scalatest._
+import org.scalatest.events._
 import org.scalatest.exceptions.TestPendingException
-import org.scalatest.{Tracker, Stopper, Reporter, FunSuite}
-import org.scalatest.events.{TestPending, TestFailed, TestIgnored, Event}
 import org.scalatest.matchers.Matcher
 
 trait KoanSuite extends FunSuite with Matchers {
 
-  def koan(name : String)(fun: => Unit) { test(name.stripMargin('|'))(fun) }
+  def koan(name: String)(fun: => Unit) {
+    test(name.stripMargin('|'))(fun)
+  }
 
   def meditate() = pending
 
-  def  __ : Matcher[Any] = {
+  def __ : Matcher[Any] = {
     throw new TestPendingException
   }
 
@@ -47,7 +49,12 @@ trait KoanSuite extends FunSuite with Matchers {
     }
   }
 
-  protected override def runTest(testName: String, reporter: Reporter, stopper: Stopper, configMap: Map[String, Any], tracker: Tracker) {
+  protected override def runTest(
+      testName: String,
+      reporter: Reporter,
+      stopper: Stopper,
+      configMap: Map[String, Any],
+      tracker: Tracker) {
     if (!Master.studentNeedsToMeditate) {
       super.runTest(testName, new ReportToTheMaster(reporter), Master, configMap, tracker)
     }
