@@ -115,6 +115,7 @@ class AboutRecursion extends KoanSuite {
 
       fib(n, 1, 0)
     }
+
     //Reminder fibonacci sequence: 1, 1, 2, 3, 5, 8, 13, 21
     fibonacci(4) should be(__)
   }
