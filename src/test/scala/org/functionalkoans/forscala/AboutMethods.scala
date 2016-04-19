@@ -10,7 +10,7 @@ class AboutMethods extends KoanSuite {
     """A method's last statement will be what is returned.
       | There is no need for the keyword `return`.
       | When a method includes a `=` after the method declaration that
-      | will infer the return type""") {
+      | will infer the return type""".stripMargin) {
     def add(x: Int, y: Int) = {
       x + y
     }
@@ -19,7 +19,7 @@ class AboutMethods extends KoanSuite {
 
   koan(
     """If you want to include the return type explicitly,
-      | no one will stop you""") {
+      | no one will stop you""".stripMargin) {
     def add(x: Int, y: Int): Int = {
       //Notice the :Int at the end of the method
       x + y
@@ -32,7 +32,7 @@ class AboutMethods extends KoanSuite {
     """If a method returns two different types and no explicit
       | return type is defined,
       | the type of the method will likely be inferred as the
-      | common super parent of the two types being returned""") {
+      | common super parent of the two types being returned""".stripMargin) {
 
     def add(x: Int, y: Int) = {
       //implicitly the return type is Any
@@ -55,8 +55,7 @@ class AboutMethods extends KoanSuite {
 
   koan(
     """If you want to have an = on the method, while still explicitly returning Unit you can make the return type
-      |`Unit`,
-      | this is also analogous to `void""") {
+      |`Unit`, this is also analogous to `void""") {
     def foo(x: Int): Unit = {
       //Note we are declaring Unit
       (x + 4) should be(__)
@@ -74,9 +73,7 @@ class AboutMethods extends KoanSuite {
     foo(3).isInstanceOf[Int] should be(__)
   }
 
-  koan(
-    """When performing recursion, the
-      |return type on the method is mandatory!""") {
+  koan("""When performing recursion, the return type on the method is mandatory!""") {
 
     def factorial(x: BigInt): BigInt = {
       //Notice the return type of BigInt!
