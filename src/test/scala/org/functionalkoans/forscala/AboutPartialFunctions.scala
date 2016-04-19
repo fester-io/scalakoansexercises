@@ -110,20 +110,20 @@ class AboutPartialFunctions extends KoanSuite with Matchers {
     manager.processRequest(PurchaseRequest(22000, "General")) should be(__)
 
     val `manager pf`: PartialFunction[PurchaseRequest, String] = {
-      case x if x.amount < 5000 ⇒ s"Manager will approve \$${x.amount}"
+      case x if x.amount < 5000 ⇒ s"Manager will approve $$${x.amount}"
     }
 
     val `director pf`: PartialFunction[PurchaseRequest, String] = {
-      case x if x.amount < 10000 ⇒ s"Director will approve \$${x.amount}"
+      case x if x.amount < 10000 ⇒ s"Director will approve $$${x.amount}"
     }
 
     val `vp pf`: PartialFunction[PurchaseRequest, String] = {
-      case x if x.amount < 20000 ⇒ s"Vice President will approve \$${x.amount}"
+      case x if x.amount < 20000 ⇒ s"Vice President will approve $$${x.amount}"
     }
 
     val `president pf`: PartialFunction[PurchaseRequest, String] = {
-      case x if x.amount < 30000 ⇒ s"President will approve \$${x.amount}"
-      case x ⇒ s"Your request for \$${x.amount} needs a board meeting!"
+      case x if x.amount < 30000 ⇒ s"President will approve $$${x.amount}"
+      case x ⇒ s"Your request for $$${x.amount} needs a board meeting!"
     }
 
     val cor = `manager pf` orElse `director pf` orElse `vp pf` orElse `president pf`
@@ -150,28 +150,28 @@ object ChainOfResponsibility {
   class Manager(successor: Option[PurchasePower] = None) extends PurchasePower(successor) {
     final val Allowable = 10 * Base
     override def processRequest(request: PurchaseRequest) =
-      if (request.amount < Allowable) Some(s"Manager will approve \$${request.amount}")
+      if (request.amount < Allowable) Some(s"Manager will approve $$${request.amount}")
       else successor flatMap (_.processRequest(request))
   }
 
   class Director(successor: Option[PurchasePower] = None) extends PurchasePower(successor) {
     final val Allowable = 20 * Base
     override def processRequest(request: PurchaseRequest) =
-      if (request.amount < Allowable) Some(s"Director will approve \$${request.amount}")
+      if (request.amount < Allowable) Some(s"Director will approve $$${request.amount}")
       else successor flatMap (_.processRequest(request))
   }
 
   class VicePresident(successor: Option[PurchasePower] = None) extends PurchasePower(successor) {
     final val Allowable = 40 * Base
     override def processRequest(request: PurchaseRequest) =
-      if (request.amount < Allowable) Some(s"Vice President will approve \$${request.amount}")
+      if (request.amount < Allowable) Some(s"Vice President will approve $$${request.amount}")
       else successor flatMap (_.processRequest(request))
   }
 
   class President(successor: Option[PurchasePower] = None) extends PurchasePower(successor) {
     final val Allowable = 60 * Base
     override def processRequest(request: PurchaseRequest) =
-      if (request.amount < Allowable) Some(s"President will approve \$${request.amount}")
-      else Some(s"Your request for \$${request.amount} needs a board meeting!")
+      if (request.amount < Allowable) Some(s"President will approve $$${request.amount}")
+      else Some(s"Your request for $$${request.amount} needs a board meeting!")
   }
 }
