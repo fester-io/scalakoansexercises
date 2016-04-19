@@ -7,7 +7,7 @@ import scala.annotation.tailrec
 class AboutMethods extends KoanSuite {
 
   koan(
-    """A method's last statement will be what is returned
+    """A method's last statement will be what is returned.
       | There is no need for the keyword `return`.
       | When a method includes a `=` after the method declaration that
       | will infer the return type""") {
@@ -44,8 +44,8 @@ class AboutMethods extends KoanSuite {
     add(1, 1) should be(__)
   }
 
-
-  koan( """If a method does not of have equal it is considered `Unit` which is analogous to `void` in Java""") {
+  /** @note This is considered bad practice, use = syntax! */
+  koan("""If a method does not of have equal it is considered `Unit` which is analogous to `void` in Java""") {
     def foo(x: Int) {
       //Note: No `=`
       (x + 4) should be(__)
@@ -56,7 +56,7 @@ class AboutMethods extends KoanSuite {
   koan(
     """If you want to have an = on the method, while still explicitly returning Unit you can make the return type
       |`Unit`,
-      | this also analogous to `void""") {
+      | this is also analogous to `void""") {
     def foo(x: Int): Unit = {
       //Note we are declaring Unit
       (x + 4) should be(__)
@@ -64,12 +64,12 @@ class AboutMethods extends KoanSuite {
     foo(3)
   }
 
-  koan( """Once you have an =, it is understood that there will be a return type and can be inferred""") {
+  koan("""Once you have an =, it is understood that there will be a return type and can be inferred""") {
     def foo(x: Int) = 3 + 4
     foo(3).isInstanceOf[Int] should be(__) //.isInstanceOf[...] is analogous to Java's instanceOf
   }
 
-  koan( """Of course if you wish to be explicit about the return type, you can attach it at the end of the method""") {
+  koan("""Of course if you wish to be explicit about the return type, you can attach it at the end of the method""") {
     def foo(x: Int): Int = 3 + 4
     foo(3).isInstanceOf[Int] should be(__)
   }
@@ -93,7 +93,7 @@ class AboutMethods extends KoanSuite {
     """If you want to ensure a method is not only recursive but _tail recursive_,
       | you can get help from the scala compiler to ensure that it is indeed a
       | tail recursive call by
-      | including scala.annotation.tailrec on the method.  When methods are properly tail recursive. The 
+      | including scala.annotation.tailrec on the method.  When methods are properly tail recursive, the
       | Scala compiler will optimize the code from stack recursion into a loop at compile time""") {
 
     import scala.annotation.tailrec
@@ -119,7 +119,7 @@ class AboutMethods extends KoanSuite {
   koan(
     """In scala, methods can be placed inside in methods! This comes useful for
       | recursion where accumulator helper methods can be placed inside the outer
-      |  method, or you just want to place one method in another for design reasons""") {
+      | method, or you just want to place one method in another for design reasons""") {
     def factorial(i: BigInt): BigInt = {
       @tailrec
       def fact(i: BigInt, accumulator: BigInt): BigInt = {
@@ -131,16 +131,29 @@ class AboutMethods extends KoanSuite {
       fact(i, 1)
     }
 
-    factorial(3) should be(6)
+    factorial(3) should be(__)
+  }
+
+  koan("""The former method could of course also be written with a pattern match""") {
+    def factorial(i: BigInt) = {
+      @tailrec def fact(i: BigInt, acc: BigInt = 1): BigInt = i match {
+        case x if x <= 1 ⇒ acc
+        case x ⇒ fact(x - 1, x * acc)
+      }
+
+      fact(i)
+    }
+
+    factorial(5) should be(__)
   }
 
   koan(
     """Remember you can have strange characters in values and variables as long as they're
-      |  after an underscore, well you can do the same in methods""") {
+      | after an underscore, well you can do the same in methods""") {
 
     class Pennies(val n: Int)
     def doYouHaveAnySpareChange_?() = new Pennies(25)
-    doYouHaveAnySpareChange_?.n should be(__)
+    doYouHaveAnySpareChange_?().n should be(__)
   }
 
   koan(
@@ -171,7 +184,7 @@ class AboutMethods extends KoanSuite {
 
   koan(
     """Methods with colons are right-associative, that means the object that a method is on will be on
-      |the _right_ and the method parameter will be on the _left_""") {
+      | the _right_ and the method parameter will be on the _left_""") {
 
     class Foo(y: Int) {
       def ~:(n: Int) = n + y + 3
