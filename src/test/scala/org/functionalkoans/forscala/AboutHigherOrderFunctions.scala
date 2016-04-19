@@ -133,7 +133,7 @@ class AboutHigherOrderFunctions extends KoanSuite {
 
   koan("Currying is a technique to transform function with multiple parameters to function with one parameter") {
     def multiply(x: Int, y: Int) = x * y
-    (multiply _).isInstanceOf[Function2[_, _, _]] should be(__)
+    (multiply _).isInstanceOf[(_, _) ⇒ _] should be(__)
     val multiplyCurried = (multiply _).curried
     multiply(4, 5) should be(__)
     multiplyCurried(3)(2) should be(__)
