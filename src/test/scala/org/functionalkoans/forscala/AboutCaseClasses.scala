@@ -33,7 +33,9 @@ class AboutCaseClasses extends KoanSuite {
     (p1.hashCode == p3.hashCode) should be(__)
   }
 
-  koan("Case classes have a convenient way they can be created") {
+  koan(
+    """Case classes have a convenient way they can be created.
+      | This works because case classes automatically get an `apply` factory method defined.""".stripMargin) {
     case class Dog(name: String, breed: String)
 
     val d1 = Dog("Scooby", "Doberman")
@@ -62,6 +64,17 @@ class AboutCaseClasses extends KoanSuite {
     //d1.name = "Scooby Doo"
   }
 
+  koan("""By default case classes' properties are public, they can however also be private""") {
+    case class Cat(name: String, private val age: Int)
+
+    val c1 = Cat("Tom", 8)
+    c1.name should be(__)
+
+    // what happens if you uncomment the line below? Why?
+    // c1.age should be(__)
+  }
+
+  /** @note Don't use mutable properties, see `copy` below! */
   koan("Case classes can have mutable properties") {
     case class Dog(var name: String, breed: String) // you can rename a dog, but change its breed? nah!
     val d1 = Dog("Scooby", "Doberman")
@@ -75,7 +88,9 @@ class AboutCaseClasses extends KoanSuite {
     d1.breed should be(__)
   }
 
-  koan("Safer alternatives exist for altering case classes") {
+  koan(
+    """Safer alternatives exist for altering case classes. Like the `toString` method
+      | is automatically defined for case classes, so will the `copy` method""".stripMargin) {
     case class Dog(name: String, breed: String) // Doberman
 
     val d1 = Dog("Scooby", "Doberman")
