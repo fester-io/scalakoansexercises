@@ -33,7 +33,6 @@ class AboutRecursion extends KoanSuite {
       | meaning that the last call and only call of the method is the recursive method. Scala optimizes recursive calls
       | to a loop from a stack""") {
 
-
     //    @tailrec   //Uncomment this like to see the result, then comment it again and answer the koan
     def fibonacci(n: Int): Int = {
       if (n <= 1)
