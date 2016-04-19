@@ -6,14 +6,56 @@ import scala.annotation.tailrec
 
 class AboutRecursion extends KoanSuite {
 
+  koan("""When performing recursion, the return type on the method is mandatory!""") {
+
+    def factorial(x: BigInt): BigInt = {
+      //Notice the return type of BigInt!
+      if (x <= 1) 1
+      else x * factorial(x - 1)
+    }
+
+    factorial(4) should be(__) // List(...) is how a list is created more about lists later.
+
+    //Note: Fire up a REPL and paste factorial(100000)!
+  }
+
   koan(
-    """Methods can be embedded in other methods, this is particularly useful as helper methods for recursion.
-      | Also in Scala, any recursive method must have a return type.""") {
+    """If you want to ensure a method is not only recursive but _tail recursive_,
+      | you can get help from the scala compiler to ensure that it is indeed a
+      | tail recursive call by
+      | including scala.annotation.tailrec on the method.  When methods are properly tail recursive, the
+      | Scala compiler will optimize the code from stack recursion into a loop at compile time""") {
 
-    //Reminder: 5! = 1 x 2 x 3 x 4 x 5 = 120
+    import scala.annotation.tailrec
+    //importing annotation!
+    @tailrec
+    def fact(i: BigInt, accumulator: BigInt): BigInt = {
+      // This is an accumulator to ensure tail recursion!
+      if (i <= 1)
+        accumulator
+      else
+        fact(i - 1, i * accumulator)
+    }
 
-    def factorial(i: Int): Int = {
-      def fact(i: Int, accumulator: Int): Int = {
+    def factorial(i: BigInt): BigInt = {
+      fact(i, 1)
+    }
+
+    factorial(4) should be(__)
+
+    //Note: Fire up a REPL and try factorial(100000) now!
+  }
+
+  koan(
+    """In scala, methods can be placed inside in methods! This comes useful for
+      | recursion where accumulator helper methods can be placed inside the outer
+      | method, or you just want to place one method in another for design reasons""") {
+
+    // Reminder: 5! = 1 x 2 x 3 x 4 x 5 = 120
+
+    def factorial(i: BigInt): BigInt = {
+      @tailrec
+      def fact(i: BigInt, accumulator: BigInt): BigInt = {
         if (i <= 1)
           accumulator
         else
@@ -26,6 +68,19 @@ class AboutRecursion extends KoanSuite {
     factorial(1) should be(__)
     factorial(2) should be(__)
     factorial(3) should be(__)
+  }
+
+  koan("""The former method could of course also be written with a pattern match""") {
+    def factorial(i: BigInt) = {
+      @tailrec def fact(i: BigInt, acc: BigInt = 1): BigInt = i match {
+        case x if x <= 1 ⇒ acc
+        case x ⇒ fact(x - 1, x * acc)
+      }
+
+      fact(i)
+    }
+
+    factorial(5) should be(__)
   }
 
   koan(
