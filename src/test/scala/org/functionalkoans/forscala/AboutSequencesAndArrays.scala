@@ -29,13 +29,13 @@ class AboutSequencesAndArrays extends KoanSuite {
 
   koan("You can filter any sequence based on a predicate") {
     val s = Seq("hello", "to", "you")
-    val filtered = s.filter(_.length > 2)
+    val filtered = s filter (_.length > 2)
     filtered should be(Seq(__, __))
   }
 
   koan("You can also filter Arrays in the same way") {
     val a = Array("hello", "to", "you", "again")
-    val filtered = a.filter(_.length > 3)
+    val filtered = a filter (_.length > 3)
     filtered should be(Array(__, __))
   }
 
