@@ -9,14 +9,15 @@ class AboutImplicits extends KoanSuite with Matchers {
 
   koan(
     """Implicits wrap around existing classes to provide extra functionality
-      |   This is similar to \'monkey patching\' in Ruby, and Meta-Programming in Groovy.
-      |   Creating a method isOdd for Int, which doesn't exist""") {
+      | This is similar to \'monkey patching\' in Ruby, and Meta-Programming in Groovy.
+      | Creating a method isOdd for Int, which doesn't exist""".stripMargin) {
 
     class KoanIntWrapper(val original: Int) {
       def isOdd = original % 2 != 0
     }
 
-    implicit def thisMethodNameIsIrrelevant(value: Int) = new KoanIntWrapper(value)
+    /** implicit methods don't ''need'' an explicit return type, but it's better to add it */
+    implicit def thisMethodNameIsIrrelevant(value: Int): KoanIntWrapper = new KoanIntWrapper(value)
 
     19.isOdd should be(__)
     20.isOdd should be(__)
@@ -27,11 +28,10 @@ class AboutImplicits extends KoanSuite with Matchers {
 
       class KoanIntWrapper(val original: Int) {
         def isOdd = original % 2 != 0
-
         def isEven = !isOdd
       }
 
-      implicit def thisMethodNameIsIrrelevant(value: Int) = new KoanIntWrapper(value)
+      implicit def thisMethodNameIsIrrelevant(value: Int): KoanIntWrapper = new KoanIntWrapper(value)
     }
 
     import MyPredef._
@@ -52,8 +52,8 @@ class AboutImplicits extends KoanSuite with Matchers {
 
   koan(
     """Implicits can be used declare a value to be provided as a default as
-      |   long as an implicit value is set with in the scope.  These are
-      |   called implicit function parameters""") {
+      | long as an implicit value is set with in the scope.  These are
+      | called implicit function parameters""".stripMargin) {
 
     def howMuchCanIMake_?(hours: Int)(implicit dollarsPerHour: BigDecimal) = dollarsPerHour * hours
 
