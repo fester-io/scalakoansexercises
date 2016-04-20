@@ -128,6 +128,6 @@ class AboutLists extends KoanSuite {
     a should be(List(__, __, __))
     a.tail should be(__)
     b.tail should be(__)
-    c.tail should be(__)
+    assert(c.tail === Nil)
   }
 }
